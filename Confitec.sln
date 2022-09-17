@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confitec.Core.Model", "Confitec.Core.Model\Confitec.Core.Model.csproj", "{3DA3A01F-9268-4952-82AD-0C0346420B76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confitec.Infra.Utils", "Confitec.Infra.Utils\Confitec.Infra.Utils.csproj", "{D68E3F41-A7AC-44C7-902E-1EA46CA5FF05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,14 @@ Global
 		{4C24CCC7-3F46-40AC-8AB5-9C6E7C7CC120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C24CCC7-3F46-40AC-8AB5-9C6E7C7CC120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C24CCC7-3F46-40AC-8AB5-9C6E7C7CC120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DA3A01F-9268-4952-82AD-0C0346420B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DA3A01F-9268-4952-82AD-0C0346420B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DA3A01F-9268-4952-82AD-0C0346420B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DA3A01F-9268-4952-82AD-0C0346420B76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D68E3F41-A7AC-44C7-902E-1EA46CA5FF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68E3F41-A7AC-44C7-902E-1EA46CA5FF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D68E3F41-A7AC-44C7-902E-1EA46CA5FF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68E3F41-A7AC-44C7-902E-1EA46CA5FF05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +72,8 @@ Global
 		{D393D641-ECA4-456F-BCC4-53EE2665FB29} = {30C100CC-A774-43A9-8E46-DF50DD93BBFA}
 		{D0C28BD3-1975-4D1A-90B6-C51D70EF648C} = {6042441D-1DA5-480F-98A7-7C43F0ADE7DF}
 		{4C24CCC7-3F46-40AC-8AB5-9C6E7C7CC120} = {6042441D-1DA5-480F-98A7-7C43F0ADE7DF}
+		{3DA3A01F-9268-4952-82AD-0C0346420B76} = {30C100CC-A774-43A9-8E46-DF50DD93BBFA}
+		{D68E3F41-A7AC-44C7-902E-1EA46CA5FF05} = {6042441D-1DA5-480F-98A7-7C43F0ADE7DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52794D13-3BCA-41AC-998F-C834425B320A}

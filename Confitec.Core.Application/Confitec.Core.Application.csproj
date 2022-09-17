@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Mappings.cs" />
+    <Compile Remove="Services\IService1.cs" />
   </ItemGroup>
   
   <ItemGroup>
@@ -15,7 +16,6 @@
     <PackageReference Include="FluentValidation" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-rc.1.22426.7" />
-    <PackageReference Include="NetDevPack" Version="6.0.1" />
   </ItemGroup>
   
   <ItemGroup>
@@ -24,6 +24,8 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Confitec.Core.Domain\Confitec.Core.Domain.csproj" />
+    <ProjectReference Include="..\Confitec.Core.Model\Confitec.Core.Model.csproj" />
+    <ProjectReference Include="..\Confitec.Infra.Utils\Confitec.Infra.Utils.csproj" />
   </ItemGroup>
 
 </Project>

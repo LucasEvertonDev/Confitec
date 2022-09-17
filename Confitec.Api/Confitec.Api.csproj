@@ -19,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Confitec.Core.Model\Confitec.Core.Model.csproj" />
     <ProjectReference Include="..\Confitec.Infra.IoC\Confitec.Infra.IoC.csproj" />
+    <ProjectReference Include="..\Confitec.Infra.Utils\Confitec.Infra.Utils.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Confitec.Core.Application.DTOs;
 using Confitec.Core.Application.Events.Commands.Usuarios;
 using Confitec.Core.Application.Events.Contracts;
 using Confitec.Core.Application.Events.Contracts.Base;
@@ -7,10 +6,15 @@ using Confitec.Core.Application.Events.Handlers;
 using Confitec.Core.Application.Events.Validators.Usuarios;
 using Confitec.Core.Application.Mappings;
 using Confitec.Core.Application.Services;
+using Confitec.Core.Application.Services.Intefaces;
 using Confitec.Core.Domain.Entities;
 using Confitec.Core.Domain.Interfaces;
+using Confitec.Core.Model.Models;
 using Confitec.Infra.Data.Contexts;
 using Confitec.Infra.Data.Repositorys;
+using Confitec.Infra.IoC.Configurations;
+using Confitec.Infra.IoC.Injections;
+using Confitec.Infra.Utils.Utils;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -34,33 +38,23 @@ namespace Confitec.Infra.IoC
                 options.UseSqlServer("Data Source=localhost;Initial Catalog=Web.Confitec;User ID=sa;Password=12345;Connect Timeout=120;Integrated Security=True;TrustServerCertificate=True",
                 b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-            var mapperConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new MapperProfile());
-            });
+            // Add Mapper Profiles
+            services.AddMapperProfiles();
 
-            services.AddScoped<IRepository<Usuario>, Repository<Usuario>>();
-            services.AddScoped<IEventsContract<UsuarioDto>, UsuarioEventsContract>();
-            services.AddScoped<IService<UsuarioDto>, Service<UsuarioDto>>();
+            // Adiciona os repositórios do projeto
+            services.AddRepositorys();
 
-            // Domain - Commands
-            services.AddScoped<IRequestHandler<UsuariosCreateCommand, UsuarioDto>, UsuariosEventHandler>();
-            services.AddScoped<IRequestHandler<UsuariosUpdateCommand, UsuarioDto>, UsuariosEventHandler>();
-            services.AddScoped<IRequestHandler<UsuariosDeleteCommand, UsuarioDto>, UsuariosEventHandler>();
+            // Adiciona os servicos do projeto
+            services.AddServices();
 
+            // Adiciona os eventos (handlers) e mapeamentos relacionados ao mesmo
+            services.AddEvents();
 
-            //services.AddScoped<IRequestHandler<UsuariosCreateCommand, ValidationResult>, UsuariosEventHandler>();
-            //services.AddScoped<IRequestHandler<UsuariosUpdateCommand, ValidationResult>, UsuariosEventHandler>();
-            //services.AddScoped<IRequestHandler<UsuariosDeleteCommand, ValidationResult>, UsuariosEventHandler>();
-
-            services.AddScoped<IValidator<UsuariosCreateCommand>, UsuarioCommandValidator>();
-
-            services.AddSingleton(mapperConfig.CreateMapper());
-
-            var myhandlers = AppDomain.CurrentDomain.Load("Confitec.Core.Application");
-            services.AddMediatR(myhandlers);
-
+            // Add MemoryCache
             services.AddMemoryCache();
+
+            // Incluir service Provider para instanciar classes fora do construtor pela injeção
+            EngineContext.AddServiceProvider(services.BuildServiceProvider());
 
             return services;
         }

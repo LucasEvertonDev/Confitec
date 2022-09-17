@@ -1,15 +1,14 @@
-﻿using Confitec.Core.Application.DTOs;
-using Confitec.Core.Application.Events.Commands.Base;
-using Confitec.Core.Domain.Interfaces;
+﻿using Confitec.Core.Application.Events.Commands.Base;
+using Confitec.Core.Model.Models.Base;
 
 namespace Confitec.Core.Application.Events.Contracts.Base
 {
-    public interface IEventsContract<TDto> where TDto : IDtoBase
+    public interface IEventsContract<TBaseModel> where TBaseModel : IBaseModel
     {
-        public ICommand CreateCommand { get; }
+        public Type CreateCommand { get; }
 
-        public ICommand UpdateCommand { get; }
+        public Type UpdateCommand { get; }
 
-        public ICommand DeleteCommand { get; }
+        public Type DeleteCommand { get; }
     }
 }

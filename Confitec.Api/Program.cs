@@ -1,4 +1,5 @@
 using Confitec.Infra.IoC;
+using Confitec.Infra.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 

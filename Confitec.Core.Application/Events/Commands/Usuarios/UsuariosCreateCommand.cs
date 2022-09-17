@@ -2,7 +2,7 @@
 
 namespace Confitec.Core.Application.Events.Commands.Usuarios
 {
-    public class UsuariosCreateCommand : UsuarioCommand, ICommand
+    public class UsuariosCreateCommand : UsuarioCommand
     {
     }
 }

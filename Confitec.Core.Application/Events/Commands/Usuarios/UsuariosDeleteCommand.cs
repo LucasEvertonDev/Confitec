@@ -1,10 +1,11 @@
-﻿using Confitec.Core.Application.DTOs;
-using Confitec.Core.Application.Events.Commands.Base;
+﻿using Confitec.Core.Application.Events.Commands.Base;
+using Confitec.Core.Application.Events.Dtos;
+using Confitec.Core.Model.Models;
 using MediatR;
 
 namespace Confitec.Core.Application.Events.Commands.Usuarios
 {
-    public class UsuariosDeleteCommand : ICommand, IRequest<UsuarioDto>
+    public class UsuariosDeleteCommand : ICommand, IRequest<Response>
     {
         public int Id { get; set; }
 

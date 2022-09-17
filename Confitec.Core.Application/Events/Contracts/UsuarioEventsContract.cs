@@ -1,16 +1,16 @@
-﻿using Confitec.Core.Application.DTOs;
-using Confitec.Core.Application.Events.Commands.Base;
+﻿using Confitec.Core.Application.Events.Commands.Base;
 using Confitec.Core.Application.Events.Commands.Usuarios;
 using Confitec.Core.Application.Events.Contracts.Base;
+using Confitec.Core.Model.Models;
 
 namespace Confitec.Core.Application.Events.Contracts
 {
-    public class UsuarioEventsContract : IEventsContract<UsuarioDto>
+    public class UsuarioEventsContract : IEventsContract<UsuarioModel>
     {
-        public ICommand CreateCommand => Activator.CreateInstance<UsuariosCreateCommand>();
+        public Type CreateCommand => typeof(UsuariosCreateCommand);
 
-        public ICommand UpdateCommand => Activator.CreateInstance<UsuariosUpdateCommand>();
+        public Type UpdateCommand => typeof(UsuariosUpdateCommand);
 
-        public ICommand DeleteCommand => Activator.CreateInstance<UsuariosDeleteCommand>();
+        public Type DeleteCommand => typeof(UsuariosUpdateCommand);
     }
 }

@@ -1,11 +1,12 @@
-﻿using Confitec.Core.Application.DTOs;
-using Confitec.Core.Application.Events.Commands.Base;
+﻿using Confitec.Core.Application.Events.Commands.Base;
+using Confitec.Core.Application.Events.Dtos;
+using Confitec.Core.Model.Models;
 using MediatR;
-using NetDevPack.Messaging;
+using Command = Confitec.Core.Application.Events.Commands.Base.Command;
 
 namespace Confitec.Core.Application.Events.Commands.Usuarios
 {
-    public abstract class UsuarioCommand : IRequest<UsuarioDto>, ICommand
+    public abstract class UsuarioCommand : Command, IRequest<UsuarioModel>, ICommand
     {
         public string Nome { get; set; }
 

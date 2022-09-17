@@ -1,6 +1,8 @@
-﻿namespace Confitec.Core.Application.DTOs
+﻿using Confitec.Core.Model.Models.Base;
+
+namespace Confitec.Core.Model.Models
 {
-    public class UsuarioDto : DtoBase
+    public class UsuarioModel : BaseModel
     {
         public string Nome { get; set; }
 
@@ -11,7 +13,5 @@
         public DateTime DataNascimento { get; set; }
 
         public int EscolaridadeId { get; set; }
-
-        public int HistoricoEscolarId { get; set; }
     }
 }

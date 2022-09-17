@@ -1,5 +1,6 @@
-﻿using Confitec.Core.Application.DTOs;
-using Confitec.Core.Application.Services;
+﻿using Confitec.Core.Application.Services.Intefaces;
+using Confitec.Core.Model.Dtos;
+using Confitec.Core.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Confitec.Api.Controllers
@@ -9,19 +10,31 @@ namespace Confitec.Api.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly ILogger<UsuariosController> _logger;
-        private readonly IService<UsuarioDto> _serviceUser;
+        private readonly IService<UsuarioModel> _userService;
 
         public UsuariosController(ILogger<UsuariosController> logger,
-            IService<UsuarioDto> serviceUser)
+            IService<UsuarioModel> serviceUser)
         {
             _logger = logger;
-            _serviceUser = serviceUser;
+            _userService = serviceUser;
         }
 
-        [HttpGet(Name = "GetUsuarios")]
-        public async Task<UsuarioDto?> Get()
+        [HttpPost(Name = "")]
+        public async Task<ResponseDTO<UsuarioModel>> Create([FromBody] RequestDTO<UsuarioModel> request)
         {
-            return await _serviceUser.Create(new UsuarioDto { Nome = "Lucas", Sobrenome = "Oliveira" });
+            return await _userService.CreateAsync(request);
+        }
+
+        [HttpDelete(Name = "")]
+        public async Task<ResponseDTO> Delete([FromBody] RequestDTO request)
+        {
+            return await _userService.DeleteAsync(request);
+        }
+
+        [HttpPut(Name = "")]
+        public async Task<ResponseDTO<UsuarioModel>> Update([FromBody] RequestDTO<UsuarioModel> request)
+        {
+            return await _userService.UpdateAsync(request);
         }
     }
 }
