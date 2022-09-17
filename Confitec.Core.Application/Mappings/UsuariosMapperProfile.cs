@@ -3,6 +3,7 @@ using Confitec.Core.Application.Events.Commands.Usuarios;
 using Confitec.Core.Application.Mappings.Base;
 using Confitec.Core.Domain.Entities;
 using Confitec.Core.Model.Models;
+using Confitec.Core.Model.Models.Base;
 
 namespace Confitec.Core.Application.Mappings
 {
@@ -14,6 +15,7 @@ namespace Confitec.Core.Application.Mappings
         { 
             CreateMap<UsuariosUpdateCommand, Usuario>().ReverseMap();
             CreateMap<UsuariosCreateCommand, Usuario>().ReverseMap();
+            CreateMap<UsuariosDeleteCommand, Usuario>().ReverseMap();
             CreateMap<UsuarioCommand, Usuario>().ReverseMap();
         }
 
@@ -27,6 +29,7 @@ namespace Confitec.Core.Application.Mappings
             CreateMap<UsuarioModel, UsuarioCommand>().ReverseMap();
             CreateMap<UsuarioModel, UsuariosCreateCommand>().ReverseMap();
             CreateMap<UsuarioModel, UsuariosUpdateCommand>().ReverseMap();
+            CreateMap<UsuarioModel, UsuariosDeleteCommand>().ReverseMap();
         }
     }
 }

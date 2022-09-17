@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Confitec.Core.Application.Events.Commands.Usuarios
 {
-    public class UsuariosDeleteCommand : ICommand, IRequest<Response>
+    public class UsuariosDeleteCommand : Command, ICommand, IRequest<Response>
     {
         public int Id { get; set; }
 

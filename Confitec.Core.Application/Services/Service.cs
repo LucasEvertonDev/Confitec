@@ -6,6 +6,7 @@ using Confitec.Core.Application.Services.Intefaces;
 using Confitec.Core.Model.Dtos;
 using Confitec.Core.Model.Models.Base;
 using Confitec.Infra.Utils.Extensions;
+using Confitec.Infra.Utils.Utils;
 using MediatR;
 
 namespace Confitec.Core.Application.Services
@@ -52,11 +53,14 @@ namespace Confitec.Core.Application.Services
         /// <returns></returns>
         public virtual async Task<ResponseDTO> DeleteAsync(RequestDTO requestDTO)
         {
+            var model = App.Init<TBaseModel>();
+            model.Id = requestDTO.Id;
+
             var requestHandler = _mapper.MapDynamic(
-               source: requestDTO.Id,
+               source: model,
                destinationType: _eventsContract.DeleteCommand);
 
-            var response = (Response<TBaseModel>)await _mediator.Send(requestHandler);
+            var response = (Response)await _mediator.Send(requestHandler);
 
             return new ResponseDTO<TBaseModel>
             {

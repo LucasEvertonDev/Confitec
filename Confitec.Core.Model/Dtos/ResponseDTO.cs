@@ -7,19 +7,17 @@ namespace Confitec.Core.Model.Dtos
     {
         public ResponseDTO()
         {
-            Errors = new List<string>();
         }
 
         public List<string> Errors { get; set; }
 
-        public bool Success { get => !Errors.Any(); }
+        public bool Success { get => Errors == null || !Errors.Any(); }
     }
 
     public class ResponseDTO<TModel> : ResponseDTO where TModel : IBaseModel
     {
         public ResponseDTO() : base()
         {
-            Data = App.Init<TModel>();
         }
 
         public TModel Data { get; set; }
@@ -29,7 +27,6 @@ namespace Confitec.Core.Model.Dtos
     {
         public ResponseSerchDTO() : base()
         {
-            Itens = App.Init<TList>();
         }
 
         public TList Itens { get; set; }

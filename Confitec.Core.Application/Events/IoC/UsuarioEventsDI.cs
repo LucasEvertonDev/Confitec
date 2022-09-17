@@ -16,8 +16,8 @@ namespace Confitec.Core.Application.Events.IoC
     {
         public override void AddCommandHandlers(IServiceCollection services)
         {
-            services.AddScoped<IRequestHandler<UsuariosCreateCommand, UsuarioModel>, UsuariosEventHandler>();
-            services.AddScoped<IRequestHandler<UsuariosUpdateCommand, UsuarioModel>, UsuariosEventHandler>();
+            services.AddScoped<IRequestHandler<UsuariosCreateCommand, Response<UsuarioModel>>, UsuariosEventHandler>();
+            services.AddScoped<IRequestHandler<UsuariosUpdateCommand, Response<UsuarioModel>>, UsuariosEventHandler>();
             services.AddScoped<IRequestHandler<UsuariosDeleteCommand, Response>, UsuariosEventHandler>();
         }
 
@@ -33,6 +33,8 @@ namespace Confitec.Core.Application.Events.IoC
         public override void AddValidatorCommands(IServiceCollection services)
         {
             services.AddScoped<IValidator<UsuariosCreateCommand>, UsuarioCreateCommandValidator>();
+            services.AddScoped<IValidator<UsuariosDeleteCommand>, UsuarioDeleteCommandValidator>();
+            services.AddScoped<IValidator<UsuariosUpdateCommand>, UsuarioUpdateCommandValidator>();
         }
     }
 }

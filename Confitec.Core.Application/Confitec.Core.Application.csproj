@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\Dtos\IRequest.cs" />
     <Compile Remove="Mappings.cs" />
     <Compile Remove="Services\IService1.cs" />
   </ItemGroup>

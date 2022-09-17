@@ -11,6 +11,6 @@ namespace Confitec.Core.Application.Events.Contracts
 
         public Type UpdateCommand => typeof(UsuariosUpdateCommand);
 
-        public Type DeleteCommand => typeof(UsuariosUpdateCommand);
+        public Type DeleteCommand => typeof(UsuariosDeleteCommand);
     }
 }

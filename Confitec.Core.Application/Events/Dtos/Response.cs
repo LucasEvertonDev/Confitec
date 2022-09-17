@@ -6,7 +6,6 @@ namespace Confitec.Core.Application.Events.Dtos
     {
         public Response()
         {
-            Errors = new List<string>();
         }
 
         public List<string> Errors { get; set; }
@@ -16,7 +15,6 @@ namespace Confitec.Core.Application.Events.Dtos
     {
         public Response()
         {
-            Result = App.Init<TResponse>();
         }
 
         public TResponse Result { get; set; }

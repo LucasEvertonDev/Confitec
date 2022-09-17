@@ -10,8 +10,8 @@ using MediatR;
 namespace Confitec.Core.Application.Events.Handlers
 {
     public class UsuariosEventHandler : EventHandlerBase,
-        IRequestHandler<UsuariosCreateCommand, UsuarioModel>,
-        IRequestHandler<UsuariosUpdateCommand, UsuarioModel>,
+        IRequestHandler<UsuariosCreateCommand, Response<UsuarioModel>>,
+        IRequestHandler<UsuariosUpdateCommand, Response<UsuarioModel>>,
         IRequestHandler<UsuariosDeleteCommand, Response>
     {
         private readonly IRepository<Usuario> _usuarioRepository;
@@ -24,6 +24,8 @@ namespace Confitec.Core.Application.Events.Handlers
             _mapper = mapper;
         }
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -31,9 +33,9 @@ namespace Confitec.Core.Application.Events.Handlers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         /// <exception cref="ApplicationException"></exception>
-        public async Task<UsuarioModel> Handle(UsuariosCreateCommand request, CancellationToken cancellationToken)
+        public async Task<Response<UsuarioModel>> Handle(UsuariosCreateCommand request, CancellationToken cancellationToken)
         {
-            return await OnHandler<UsuarioModel, UsuariosCreateCommand>(request, async (request) => 
+            return await OnHandler<Response<UsuarioModel>, UsuariosCreateCommand>(request, async (request) =>
             {
                 var user = _mapper.Map<Usuario>(request);
 
@@ -41,12 +43,12 @@ namespace Confitec.Core.Application.Events.Handlers
                 {
                     throw new ApplicationException($"Error creating entity.");
                 }
-               
+
                 var save = await _usuarioRepository.InsertAsync(user);
 
                 await _usuarioRepository.CommitAsync();
 
-                return new UsuarioModel()
+                return new Response<UsuarioModel>()
                 {
                     Result = _mapper.Map<UsuarioModel>(save)
                 };
@@ -60,9 +62,9 @@ namespace Confitec.Core.Application.Events.Handlers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<UsuarioModel> Handle(UsuariosUpdateCommand request, CancellationToken cancellationToken)
+        public async Task<Response<UsuarioModel>> Handle(UsuariosUpdateCommand request, CancellationToken cancellationToken)
         {
-            return await OnHandler<UsuarioModel, UsuariosUpdateCommand>(request, async (request) =>
+            return await OnHandler<Response<UsuarioModel>, UsuariosUpdateCommand>(request, async (request) =>
             {
                 var user = _mapper.Map<Usuario>(request);
 
@@ -75,7 +77,7 @@ namespace Confitec.Core.Application.Events.Handlers
 
                 await _usuarioRepository.CommitAsync();
 
-                return new UsuarioModel()
+                return new Response<UsuarioModel>()
                 {
                     Result = _mapper.Map<UsuarioModel>(save)
                 };
