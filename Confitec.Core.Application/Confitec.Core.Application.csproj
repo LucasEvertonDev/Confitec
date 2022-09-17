@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Mappings.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-rc.1.22426.7" />
+    <PackageReference Include="NetDevPack" Version="6.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Events\Queries\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Confitec.Core.Domain\Confitec.Core.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
