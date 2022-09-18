@@ -1,6 +1,5 @@
-﻿using Confitec.Core.Application.Events.Commands.Base;
-using Confitec.Core.Application.Events.Dtos;
-using Confitec.Infra.Utils.Utils;
+﻿using Confitec.Core.Application.Events.Dtos;
+using Confitec.Infra.Utils.Exceptions;
 
 namespace Confitec.Core.Application.Events.Handlers.Base
 {

@@ -1,5 +1,5 @@
 ﻿using Confitec.Core.Model.Dtos;
-using Confitec.Infra.Utils.Utils;
+using Confitec.Infra.Utils.Exceptions;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -18,7 +18,7 @@ namespace Confitec.Api.Filters
                 };
                 context.Result = new JsonResult(response) { StatusCode = 400 };
             }
-            else if(context.Exception is HandlerException)
+            else if (context.Exception is HandlerException)
             {
                 context.ExceptionHandled = true;
                 var response = new ResponseDTO()
@@ -30,6 +30,19 @@ namespace Confitec.Api.Filters
                 };
 
                 context.Result = new JsonResult(response) { StatusCode = 500 };
+            }
+            else if (context.Exception is LogicalException)
+            {
+                context.ExceptionHandled = true;
+                var response = new ResponseDTO()
+                {
+                    Errors = new List<string>()
+                    {
+                        context.Exception.Message
+                    }
+                };
+
+                context.Result = new JsonResult(response) { StatusCode = 400 };
             }
             else
             {

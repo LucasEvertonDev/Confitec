@@ -1,4 +1,6 @@
-﻿using Confitec.Core.Application.Services.Intefaces;
+﻿using Confitec.Api.Attributes;
+using Confitec.Api.Attributes.Middlewares;
+using Confitec.Core.Application.Services.Intefaces;
 using Confitec.Core.Model.Dtos;
 using Confitec.Core.Model.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +9,7 @@ namespace Confitec.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [UsuarioMiddleware]
     public class UsuariosController : ControllerBase
     {
         private readonly ILogger<UsuariosController> _logger;
@@ -43,8 +46,8 @@ namespace Confitec.Api.Controllers
             return await _userService.DeleteAsync(id);
         }
 
-        [HttpPut]
-        public async Task<ResponseDTO<UsuarioModel>> Update([FromBody] RequestDTO<UsuarioModel> request)
+        [HttpPut("{id}")]
+        public async Task<ResponseDTO<UsuarioModel>> Update(int id, [FromBody] RequestDTO<UsuarioModel> request)
         {
             return await _userService.UpdateAsync(request);
         }

@@ -1,4 +1,4 @@
-﻿namespace Confitec.Infra.Utils.Utils
+﻿namespace Confitec.Infra.Utils.Exceptions
 {
     public class HandlerException : Exception
     {

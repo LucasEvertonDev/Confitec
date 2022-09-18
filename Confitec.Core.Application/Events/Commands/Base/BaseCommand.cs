@@ -1,4 +1,5 @@
-﻿using Confitec.Infra.Utils.Utils;
+﻿using Confitec.Infra.Utils.Exceptions;
+using Confitec.Infra.Utils.Utils;
 using FluentValidation;
 using FluentValidation.Results;
 
