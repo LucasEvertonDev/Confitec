@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  services.webapi:
+    image: ${DOCKER_REGISTRY-}confitexpai
+    build:
+      context: .
+      dockerfile: Confitec.Api\Dockerfile
+      network: host
+    extra_hosts:
+      - "WIN_MSSQL1:192.168.0.1"

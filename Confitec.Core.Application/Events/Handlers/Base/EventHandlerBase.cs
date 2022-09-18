@@ -14,9 +14,9 @@ namespace Confitec.Core.Application.Events.Handlers.Base
             {
                 return await onHandlerFunc(request);
             }
-            catch
+            catch (Exception ex)
             {
-                throw new HandlerException("Não foi possível concluir a operação tente novamente mais tarde");
+                throw new HandlerException(ex.Message);
             }
         }
     }

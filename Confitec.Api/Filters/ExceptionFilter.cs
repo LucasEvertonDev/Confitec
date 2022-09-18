@@ -25,7 +25,7 @@ namespace Confitec.Api.Filters
                 {
                     Errors = new List<string>()
                     {
-                        "Ocorreu um erro ao realizar a ação. Por favor tente novamente mais tarde."
+                        "Ocorreu um erro ao se conectar a base de dados. Por favor tente novamente mais tarde."
                     }
                 };
 

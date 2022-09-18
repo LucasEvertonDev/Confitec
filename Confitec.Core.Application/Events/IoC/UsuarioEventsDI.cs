@@ -32,6 +32,7 @@ namespace Confitec.Core.Application.Events.IoC
 
         public override void AddQueryHandlers(IServiceCollection services)
         {
+            services.AddScoped<IRequestHandler<GetUsuarioByIdQuery, Response<UsuarioModel>>, GetUsuarioByIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllUsuariosQuery, Response<IEnumerable<UsuarioModel>>>, GetAllUsuariosQueryHandler>();
         }
 

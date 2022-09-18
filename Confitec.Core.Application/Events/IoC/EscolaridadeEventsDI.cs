@@ -29,6 +29,7 @@ namespace Confitec.Core.Application.Events.IoC
         public override void AddQueryHandlers(IServiceCollection services)
         {
             services.AddScoped<IRequestHandler<GetAllEscolaridadesQuery, Response<IEnumerable<EscolaridadeModel>>>, GetAllEscolaridadesQueryHandler>();
+            services.AddScoped<IRequestHandler<GetEscolaridadeByIdQuery, Response<EscolaridadeModel>>, GetEscolaridadeByIdQueryHandler>();
         }
 
         public override void AddValidatorCommands(IServiceCollection services)

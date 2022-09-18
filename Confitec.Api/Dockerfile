@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Confitec.Api/Confitec.Api/Confitec.Api.csproj", "Confitec.Api/Confitec.Api/"]
-RUN dotnet restore "Confitec.Api/Confitec.Api/Confitec.Api.csproj"
+COPY ["Confitec.Api/Confitec.Api.csproj", "Confitec.Api/"]
+RUN dotnet restore "Confitec.Api/Confitec.Api.csproj"
 COPY . .
-WORKDIR "/src/Confitec.Api/Confitec.Api"
+WORKDIR "/src/Confitec.Api"
 RUN dotnet build "Confitec.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish

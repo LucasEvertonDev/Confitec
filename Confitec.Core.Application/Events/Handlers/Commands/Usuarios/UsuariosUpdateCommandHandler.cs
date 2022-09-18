@@ -32,7 +32,7 @@ namespace Confitec.Core.Application.Events.Handlers.Commands.Usuarios
         /// <exception cref="NotImplementedException"></exception>
         public async Task<Response<UsuarioModel>> Handle(UsuariosUpdateCommand request, CancellationToken cancellationToken)
         {
-            return await OnHandler<Response<UsuarioModel>, UsuariosUpdateCommand>(request, async (request) =>
+            return await OnHandler(request, async (request) =>
             {
                 var user = _mapper.Map<Usuario>(request);
 

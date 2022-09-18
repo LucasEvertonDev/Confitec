@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Confitec.Core.Application.Events.Commands.Base;
 using Confitec.Core.Application.Events.Contracts.Base;
 using Confitec.Core.Application.Events.Dtos;
 using Confitec.Core.Application.Services.Intefaces;

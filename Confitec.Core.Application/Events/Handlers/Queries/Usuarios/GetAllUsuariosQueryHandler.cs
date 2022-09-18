@@ -27,7 +27,7 @@ namespace Confitec.Core.Application.Events.Handlers.Queries.Usuarios
 
         public async Task<Response<IEnumerable<UsuarioModel>>> Handle(GetAllUsuariosQuery request, CancellationToken cancellationToken)
         {
-            return await OnHandler<Response<IEnumerable<UsuarioModel>>, GetAllUsuariosQuery>(request, async (request) =>
+            return await OnHandler(request, async (request) =>
             {
                 var users = await _usuarioRepository.Table.ToListAsync();
 

@@ -32,7 +32,7 @@ namespace Confitec.Core.Application.Events.Handlers.Commands.Usuarios
         /// <exception cref="ApplicationException"></exception>
         public async Task<Response<UsuarioModel>> Handle(UsuariosCreateCommand request, CancellationToken cancellationToken)
         {
-            return await OnHandler<Response<UsuarioModel>, UsuariosCreateCommand>(request, async (request) =>
+            return await OnHandler(request, async (request) =>
             {
                 var user = _mapper.Map<Usuario>(request);
 
