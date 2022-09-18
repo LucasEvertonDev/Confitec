@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using Confitec.Core.Application.Events.Commands.Escolaridades;
 using Confitec.Core.Application.Events.Commands.Usuarios;
+using Confitec.Core.Application.Events.Queries.Escolaridades;
+using Confitec.Core.Application.Events.Queries.Usuarios;
 using Confitec.Core.Application.Mappings.Base;
 using Confitec.Core.Domain.Entities;
 using Confitec.Core.Model.Models;
@@ -30,6 +33,11 @@ namespace Confitec.Core.Application.Mappings
             CreateMap<UsuarioModel, UsuariosCreateCommand>().ReverseMap();
             CreateMap<UsuarioModel, UsuariosUpdateCommand>().ReverseMap();
             CreateMap<UsuarioModel, UsuariosDeleteCommand>().ReverseMap();
+        }
+
+        public override void ModelToQuery()
+        {
+            CreateMap<UsuarioModel, GetUsuarioByIdQuery>().ReverseMap();
         }
     }
 }

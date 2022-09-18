@@ -10,11 +10,11 @@ namespace Confitec.Core.Application.Events.Validators.Usuarios
 {
     public abstract class UsuarioCommandValidator<T> : AbstractValidator<T> where T : UsuarioCommand
     {
-        private readonly IEscolaridadeService _escolaridadeService;
+        private readonly IEscolaridadeService<EscolaridadeModel> _escolaridadeService;
 
         public UsuarioCommandValidator()
         {
-            _escolaridadeService = (IEscolaridadeService)EngineContext.GetService<IEscolaridadeService>();
+            _escolaridadeService = (IEscolaridadeService<EscolaridadeModel>)EngineContext.GetService<IEscolaridadeService<EscolaridadeModel>>();
         }
 
         protected void ValidateUserCommand()
@@ -39,7 +39,7 @@ namespace Confitec.Core.Application.Events.Validators.Usuarios
    
         private bool IsValidEscolaridade(int id)
         {
-            var escolaridades = Task.Run(async () => await _escolaridadeService.FindAllAsync()).Result ?? new List<EscolaridadeModel>();
+            var escolaridades = Task.Run(async () => await _escolaridadeService.FindAllAsync()).Result.Data.ToList();
             return escolaridades.Exists(e => e.Id == id);
         }
     }

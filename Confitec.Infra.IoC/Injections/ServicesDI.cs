@@ -9,10 +9,8 @@ namespace Confitec.Infra.IoC.Configurations
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IService<UsuarioModel>, Service<UsuarioModel>>();
-
-            // Conventional services
-            services.AddScoped<IEscolaridadeService, EscolaridadeService>();
+            services.AddScoped<IUsuarioService<UsuarioModel>, UsuarioService>();
+            services.AddScoped<IEscolaridadeService<EscolaridadeModel>, EscolaridadeService>();
         }
     }
 }

@@ -7,6 +7,7 @@ using Confitec.Core.Application.Events.Handlers.Commands.Usuarios;
 using Confitec.Core.Application.Events.Handlers.Queries.Usuarios;
 using Confitec.Core.Application.Events.IoC.Base;
 using Confitec.Core.Application.Events.Queries;
+using Confitec.Core.Application.Events.Queries.Usuarios;
 using Confitec.Core.Application.Events.Validators.Usuarios;
 using Confitec.Core.Model.Models;
 using FluentValidation;

@@ -1,26 +1,10 @@
-﻿using AutoMapper;
-using Confitec.Core.Application.Events.Commands.Usuarios;
-using Confitec.Core.Application.Events.Contracts;
-using Confitec.Core.Application.Events.Contracts.Base;
-using Confitec.Core.Application.Events.Handlers;
-using Confitec.Core.Application.Events.Validators.Usuarios;
-using Confitec.Core.Application.Mappings;
-using Confitec.Core.Application.Services;
-using Confitec.Core.Application.Services.Intefaces;
-using Confitec.Core.Domain.Entities;
-using Confitec.Core.Domain.Interfaces;
-using Confitec.Core.Model.Models;
-using Confitec.Infra.Data.Contexts;
-using Confitec.Infra.Data.Repositorys;
+﻿using Confitec.Infra.Data.Contexts;
 using Confitec.Infra.IoC.Configurations;
 using Confitec.Infra.IoC.Injections;
 using Confitec.Infra.Utils.Utils;
-using FluentValidation;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.DataAnnotations;
 
 namespace Confitec.Infra.IoC
 {

@@ -13,31 +13,37 @@ namespace Confitec.Api.Controllers
         private readonly IService<UsuarioModel> _userService;
 
         public UsuariosController(ILogger<UsuariosController> logger,
-            IService<UsuarioModel> serviceUser)
+            IUsuarioService<UsuarioModel> serviceUser)
         {
             _logger = logger;
             _userService = serviceUser;
         }
 
-        [HttpGet(Name = "")]
-        public async Task<ResponseDTO<IEnumerable<UsuarioModel>>> Index()
+        [HttpGet("{id}")]
+        public async Task<ResponseDTO<UsuarioModel>> Find(int id)
+        {
+            return await _userService.FindByIdAsync(id);
+        }
+
+        [HttpGet]
+        public async Task<ResponseDTO<IEnumerable<UsuarioModel>>> FindAll()
         {
             return await _userService.FindAllAsync();
         }
 
-        [HttpPost(Name = "")]
+        [HttpPost]
         public async Task<ResponseDTO<UsuarioModel>> Create([FromBody] RequestDTO<UsuarioModel> request)
         {
             return await _userService.CreateAsync(request);
         }
 
-        [HttpDelete(Name = "")]
-        public async Task<ResponseDTO> Delete([FromBody] RequestDTO request)
+        [HttpDelete("{id}")]
+        public async Task<ResponseDTO> Delete(int id)
         {
-            return await _userService.DeleteAsync(request);
+            return await _userService.DeleteAsync(id);
         }
 
-        [HttpPut(Name = "")]
+        [HttpPut]
         public async Task<ResponseDTO<UsuarioModel>> Update([FromBody] RequestDTO<UsuarioModel> request)
         {
             return await _userService.UpdateAsync(request);

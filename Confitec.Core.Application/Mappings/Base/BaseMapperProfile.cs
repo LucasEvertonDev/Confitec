@@ -11,6 +11,8 @@ namespace Confitec.Core.Application.Mappings.Base
             ModelToCommand();
 
             CommandToEntity();
+
+            ModelToQuery();
         }
 
         public abstract void EntityToModel();
@@ -18,5 +20,7 @@ namespace Confitec.Core.Application.Mappings.Base
         public abstract void ModelToCommand();
 
         public abstract void CommandToEntity();
+
+        public abstract void ModelToQuery();
     }
 }

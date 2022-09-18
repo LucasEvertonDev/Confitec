@@ -1,7 +1,6 @@
-﻿using Confitec.Core.Application.Events.Commands.Base;
-using Confitec.Core.Application.Events.Commands.Usuarios;
+﻿using Confitec.Core.Application.Events.Commands.Usuarios;
 using Confitec.Core.Application.Events.Contracts.Base;
-using Confitec.Core.Application.Events.Queries;
+using Confitec.Core.Application.Events.Queries.Usuarios;
 using Confitec.Core.Model.Models;
 
 namespace Confitec.Core.Application.Events.Contracts
@@ -15,5 +14,7 @@ namespace Confitec.Core.Application.Events.Contracts
         public Type DeleteCommand => typeof(UsuariosDeleteCommand);
 
         public Type GetAllQuery => typeof(GetAllUsuariosQuery);
+
+        public Type GetByIdQuery => typeof(GetUsuarioByIdQuery);
     }
 }

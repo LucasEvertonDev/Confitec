@@ -50,10 +50,10 @@ namespace Confitec.Core.Application.Services
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public virtual async Task<ResponseDTO> DeleteAsync(RequestDTO requestDTO)
+        public virtual async Task<ResponseDTO> DeleteAsync(int id)
         {
             var model = App.Init<TBaseModel>();
-            model.Id = requestDTO.Id;
+            model.Id = id;
 
             var requestHandler = _mapper.MapDynamic(
                source: model,
@@ -88,13 +88,35 @@ namespace Confitec.Core.Application.Services
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<ResponseDTO<IEnumerable<TBaseModel>>> FindAllAsync()
+        public virtual async Task<ResponseDTO<IEnumerable<TBaseModel>>> FindAllAsync()
         {
             var requestHandler = App.Init(_eventsContract.GetAllQuery);
 
             var response = (Response<IEnumerable<TBaseModel>>)await _mediator.Send(requestHandler);
 
             return new ResponseDTO<IEnumerable<TBaseModel>>
+            {
+                Data = response.Result, // Result e data são objetos que decem ser equivalentes sendo uma lista ou um objeto,
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public virtual async Task<ResponseDTO<TBaseModel>> FindByIdAsync(int id)
+        {
+            var model = App.Init<TBaseModel>();
+            model.Id = id;
+
+            var requestHandler = _mapper.MapDynamic(
+               source: model,
+               destinationType: _eventsContract.GetByIdQuery);
+
+            var response = (Response<TBaseModel>)await _mediator.Send(requestHandler);
+
+            return new ResponseDTO<TBaseModel>
             {
                 Data = response.Result, // Result e data são objetos que decem ser equivalentes sendo uma lista ou um objeto,
             };

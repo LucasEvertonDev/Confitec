@@ -7,10 +7,12 @@ namespace Confitec.Core.Application.Services.Intefaces
     {
         Task<ResponseDTO<TBaseModel>> CreateAsync(RequestDTO<TBaseModel> requestDTO);
 
-        Task<ResponseDTO> DeleteAsync(RequestDTO requestDTO);
+        Task<ResponseDTO> DeleteAsync(int id);
 
         Task<ResponseDTO<TBaseModel>> UpdateAsync(RequestDTO<TBaseModel> requestDTO);
 
         Task<ResponseDTO<IEnumerable<TBaseModel>>> FindAllAsync();
+
+        Task<ResponseDTO<TBaseModel>> FindByIdAsync(int id);
     }
 }

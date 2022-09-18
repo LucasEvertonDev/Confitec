@@ -1,32 +1,34 @@
 ﻿using AutoMapper;
+using Confitec.Core.Application.Events.Contracts.Base;
 using Confitec.Core.Application.Services.Intefaces;
 using Confitec.Core.Domain.Entities;
 using Confitec.Core.Domain.Interfaces;
 using Confitec.Core.Model.Models;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Confitec.Core.Application.Services
 {
-    public class EscolaridadeService : IEscolaridadeService
+    public class EscolaridadeService : Service<EscolaridadeModel>, IEscolaridadeService<EscolaridadeModel>
     {
-        private IRepository<Escolaridade> _escolaridadeRepository;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
+        private IEventsContract<EscolaridadeModel> _eventsContract; // Determina as ações padrões que serão disparadas pelo objeto
 
-        public EscolaridadeService(IRepository<Escolaridade> escolaridadeRepository,
-            IMapper mapper)
+        public EscolaridadeService(IMapper mapper,
+            IMediator mediator,
+            IEventsContract<EscolaridadeModel> eventsContract) : base(mapper, mediator, eventsContract)
         {
-            _escolaridadeRepository = escolaridadeRepository;
             _mapper = mapper;
+            _mediator = mediator;
+            _eventsContract = eventsContract;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public async Task<List<EscolaridadeModel>> FindAllAsync()
+        public async Task<bool> UsuarioExists(int id)
         {
-            return _mapper.Map<List<EscolaridadeModel>>(
-                await _escolaridadeRepository.Table.OrderBy(a => a.Id).ToListAsync());
+            var user = await this.FindByIdAsync(id);
+
+            return user != null && user.Data.Id > 0; 
         }
     }
 }

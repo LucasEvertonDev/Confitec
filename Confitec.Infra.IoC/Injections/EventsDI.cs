@@ -12,6 +12,8 @@ namespace Confitec.Infra.IoC.Injections
         {
             App.Init<UsuarioEventsDI>().IncludeDependencys(services);
 
+            App.Init<EscolaridadeEventsDI>().IncludeDependencys(services);
+
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             services.AddMediatR(AppDomain.CurrentDomain.Load("Confitec.Core.Application"));

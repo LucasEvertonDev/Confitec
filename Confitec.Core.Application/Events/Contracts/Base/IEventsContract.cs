@@ -12,5 +12,7 @@ namespace Confitec.Core.Application.Events.Contracts.Base
         public Type DeleteCommand { get; }
 
         public Type GetAllQuery { get; }
+
+        public Type GetByIdQuery { get; }
     }
 }
