@@ -35,7 +35,7 @@ namespace Confitec.Infra.IoC
         public static IServiceCollection AddInfraEstructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer("Data Source=localhost;Initial Catalog=Web.Confitec;User ID=sa;Password=12345;Connect Timeout=120;Integrated Security=True;TrustServerCertificate=True",
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             // Add Mapper Profiles
