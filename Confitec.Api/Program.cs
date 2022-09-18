@@ -1,11 +1,17 @@
+using Confitec.Api.Filters;
 using Confitec.Infra.IoC;
 using Confitec.Infra.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers(c => 
+{
+    c.Filters.Add<ExceptionFilter>();
 
-builder.Services.AddControllers();
+    c.Filters.Add<ActionFilter>();
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

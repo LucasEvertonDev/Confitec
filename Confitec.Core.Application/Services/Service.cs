@@ -42,7 +42,6 @@ namespace Confitec.Core.Application.Services
             return new ResponseDTO<TBaseModel>
             {
                 Data = response.Result, // Result e data são objetos que decem ser equivalentes sendo uma lista ou um objeto,
-                Errors = response.Errors
             };
         }
 
@@ -62,10 +61,7 @@ namespace Confitec.Core.Application.Services
 
             var response = (Response)await _mediator.Send(requestHandler);
 
-            return new ResponseDTO<TBaseModel>
-            {
-                Errors = response.Errors
-            };
+            return new ResponseDTO<TBaseModel> { };
         }
 
         /// <summary>
@@ -84,7 +80,23 @@ namespace Confitec.Core.Application.Services
             return new ResponseDTO<TBaseModel>
             {
                 Data = response.Result, // Result e data são objetos que decem ser equivalentes sendo uma lista ou um objeto,
-                Errors = response.Errors
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<ResponseDTO<IEnumerable<TBaseModel>>> FindAllAsync()
+        {
+            var requestHandler = App.Init(_eventsContract.GetAllQuery);
+
+            var response = (Response<IEnumerable<TBaseModel>>)await _mediator.Send(requestHandler);
+
+            return new ResponseDTO<IEnumerable<TBaseModel>>
+            {
+                Data = response.Result, // Result e data são objetos que decem ser equivalentes sendo uma lista ou um objeto,
             };
         }
     }

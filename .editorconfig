@@ -17,3 +17,6 @@ dotnet_diagnostic.CS8604.severity = none
 
 # CS8602: Desreferência de uma referência possivelmente nula.
 dotnet_diagnostic.CS8602.severity = none
+
+# CS0184: 'A expressão 'is' determinada nunca é do tipo fornecido
+dotnet_diagnostic.CS0184.severity = none

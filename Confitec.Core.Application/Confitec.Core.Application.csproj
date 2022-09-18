@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\Commands\Base\Command.cs" />
     <Compile Remove="Events\Dtos\IRequest.cs" />
     <Compile Remove="Mappings.cs" />
     <Compile Remove="Services\IService1.cs" />
@@ -17,10 +18,6 @@
     <PackageReference Include="FluentValidation" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-rc.1.22426.7" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Events\Queries\" />
   </ItemGroup>
   
   <ItemGroup>

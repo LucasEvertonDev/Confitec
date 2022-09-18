@@ -7,5 +7,11 @@
         {
             return Activator.CreateInstance<T>();
         }
+
+        // Perfumaria
+        public static dynamic Init(Type t)
+        {
+            return Activator.CreateInstance(t);
+        }
     }
 }

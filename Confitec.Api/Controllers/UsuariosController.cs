@@ -19,6 +19,12 @@ namespace Confitec.Api.Controllers
             _userService = serviceUser;
         }
 
+        [HttpGet(Name = "")]
+        public async Task<ResponseDTO<IEnumerable<UsuarioModel>>> Index()
+        {
+            return await _userService.FindAllAsync();
+        }
+
         [HttpPost(Name = "")]
         public async Task<ResponseDTO<UsuarioModel>> Create([FromBody] RequestDTO<UsuarioModel> request)
         {

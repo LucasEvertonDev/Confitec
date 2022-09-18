@@ -2,11 +2,10 @@
 using Confitec.Core.Application.Events.Dtos;
 using Confitec.Core.Model.Models;
 using MediatR;
-using Command = Confitec.Core.Application.Events.Commands.Base.Command;
 
 namespace Confitec.Core.Application.Events.Commands.Usuarios
 {
-    public abstract class UsuarioCommand : Command, IRequest<Response<UsuarioModel>>, ICommand
+    public abstract class UsuarioCommand : BaseCommand, IRequest<Response<UsuarioModel>>, IBaseCommand
     {
         public string Nome { get; set; }
 

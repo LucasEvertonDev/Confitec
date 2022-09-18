@@ -7,8 +7,6 @@ namespace Confitec.Core.Application.Events.Dtos
         public Response()
         {
         }
-
-        public List<string> Errors { get; set; }
     }
 
     public class Response<TResponse> : Response
