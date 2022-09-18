@@ -1,5 +1,6 @@
 using Confitec.Api.Filters;
 using Confitec.Infra.IoC;
+using Confitec.Infra.Utils.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 

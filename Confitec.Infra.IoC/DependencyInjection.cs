@@ -37,8 +37,8 @@ namespace Confitec.Infra.IoC
             // Add MemoryCache
             services.AddMemoryCache();
 
-            // Incluir service Provider para instanciar classes fora do construtor pela injeção
-            EngineContext.AddServiceProvider(services.BuildServiceProvider());
+            // Include services
+            EngineContext.AddServices(services);
 
             return services;
         }

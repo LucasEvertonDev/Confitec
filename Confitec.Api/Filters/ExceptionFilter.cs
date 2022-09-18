@@ -42,7 +42,7 @@ namespace Confitec.Api.Filters
                     }
                 };
 
-                context.Result = new JsonResult(response) { StatusCode = 400 };
+                context.Result = new JsonResult(response) { StatusCode = 500 };
             }
             else
             {

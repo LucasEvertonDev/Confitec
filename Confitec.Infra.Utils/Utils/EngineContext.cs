@@ -1,26 +1,27 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Confitec.Infra.Utils.Utils
 {
     public static class EngineContext
     {
-        private static IServiceProvider _serviceProvider { get; set; }
+        private static IServiceCollection _services { get; set; }
 
-        public static void AddServiceProvider(IServiceProvider serviceProvider)
+        public static void AddServices(IServiceCollection services)
         {
-            _serviceProvider = serviceProvider;
+            _services = services;
         }
 
         public static TService GetService<TService>()
         {
-            return _serviceProvider.GetService<TService>();
+            return _services.BuildServiceProvider().GetService<TService>();
         }
 
         public static object? GetService(Type t)
         {
             try
             {
-                return _serviceProvider.GetService(t);
+                return _services.BuildServiceProvider().GetService(t);
             }
             catch
             {

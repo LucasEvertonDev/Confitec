@@ -9,8 +9,8 @@ namespace Confitec.Infra.IoC.Configurations
     {
         public static void AddRepositorys(this IServiceCollection services)
         {
-            services.AddScoped<IRepository<Usuario>, Repository<Usuario>>();
-            services.AddScoped<IRepository<Escolaridade>, Repository<Escolaridade>>();
+            services.AddTransient<IRepository<Usuario>, Repository<Usuario>>();
+            services.AddTransient<IRepository<Escolaridade>, Repository<Escolaridade>>();
         }
     }
 }

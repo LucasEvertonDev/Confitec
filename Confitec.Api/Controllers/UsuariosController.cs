@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Confitec.Api.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     [UsuarioMiddleware]
+    [ApiController]
     public class UsuariosController : ControllerBase
     {
         private readonly ILogger<UsuariosController> _logger;
