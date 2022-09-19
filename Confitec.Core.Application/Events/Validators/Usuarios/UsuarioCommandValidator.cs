@@ -25,7 +25,7 @@ namespace Confitec.Core.Application.Events.Validators.Usuarios
             RuleFor(a => a.Sobrenome).NotEmpty().WithMessage("O campo sobrenome é obrigatório")
                 .MaximumLength(30).WithMessage("O campo sobrenome deve ter no máximo 30 caracteres");
 
-            RuleFor(a => a.Email).NotEmpty().WithMessage("O campo nome é obrigatório")
+            RuleFor(a => a.Email).NotEmpty().WithMessage("O campo email é obrigatório")
                 .EmailAddress().WithMessage("O campo email é inválido")
                 .MaximumLength(50).WithMessage("O campo nome deve ter no máximo 50 caracteres");
 
