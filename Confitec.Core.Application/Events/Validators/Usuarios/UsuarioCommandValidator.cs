@@ -27,7 +27,7 @@ namespace Confitec.Core.Application.Events.Validators.Usuarios
 
             RuleFor(a => a.Email).NotEmpty().WithMessage("O campo email é obrigatório")
                 .EmailAddress().WithMessage("O campo email é inválido")
-                .MaximumLength(50).WithMessage("O campo nome deve ter no máximo 50 caracteres");
+                .MaximumLength(50).WithMessage("O campo email deve ter no máximo 50 caracteres");
 
             RuleFor(a => a.DataNascimento).NotEqual(DateTime.MinValue).WithMessage("O campo data nascimento é obrigatório")
                 .Must(a => a <= DateTime.Now).WithMessage("A data de nascimento não pode ser superior a atual");
