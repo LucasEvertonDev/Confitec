@@ -5,6 +5,5 @@ namespace Confitec.Core.Application.Services.Intefaces
 {
     public interface IEscolaridadeService<TBaseModel> : IService<TBaseModel> where TBaseModel : BaseModel 
     {
-        Task<bool> UsuarioExists(int id);
     }
 }

@@ -23,12 +23,5 @@ namespace Confitec.Core.Application.Services
             _mediator = mediator;
             _eventsContract = eventsContract;
         }
-
-        public async Task<bool> UsuarioExists(int id)
-        {
-            var user = await this.FindByIdAsync(id);
-
-            return user != null && user.Data.Id > 0; 
-        }
     }
 }
